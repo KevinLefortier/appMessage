@@ -1,0 +1,14 @@
+{{ > /includes/header }}
+<h1>Page index</h1>
+<a class="ui button" href="/create">
+    <i class ="ui plus icon"></i>
+    Créer un message
+</a>
+<h2>Messages</h2>
+<ul>
+    {{#message}}
+    <li>{{title}}</li>
+    {{#message}}
+
+    {{^message}}
+{{ > /includes/footer }}
