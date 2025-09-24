@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class HomeController {
     @ModelAttribute("messages")
     public List<AppMessage> getMessages() {
         List<AppMessage> list= new ArrayList<>();
-        //list
+        list.add(new AppMessage("Test", "ok", "", ""));
         return new ArrayList<>();
     }
 
@@ -32,12 +33,6 @@ public class HomeController {
     }
 
     @GetMapping("/create")
-    /*public String createForm(ModelMap model) {
-        model.put("title", "Création de message");
-        model.put("btnValidateCaption","Créer le message");
-        return ("home/create");
-    }*/
-
     public ModelAndView _createForm() {
         ModelAndView mv=new ModelAndView("home/create");
         mv.addObject("title", "Création de message");
@@ -47,8 +42,9 @@ public class HomeController {
     }
 
      @PostMapping("/create")
-     public RedirectView postMessage(@ModelAttribute AppMessage message, @SessionAttribute("messages")  List<AppMessage> messages) {
+     public RedirectView postMessage(@ModelAttribute AppMessage message, @SessionAttribute("messages")  List<AppMessage> messages, RedirectAttributes attributes) {
         messages.add(message);
+        attributes.addFlashAttribute("msg", message);
         return new RedirectView("/");
      }
 

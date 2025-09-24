@@ -8,7 +8,23 @@
 <ul>
     {{#message}}
     <li>{{title}}</li>
-    {{#message}}
+    {{/message}}
 
     {{^message}}
+    <div class="ui message"> Aucun message</div>
+    {{/message}}
+</ul>
+
+{{#msg}}
+<script>
+    $.toast({
+        title: 'Ajout de message',
+        message: 'Le message `{{title}}` a été ajouté !',
+        showProgress: 'top',
+        class: 'success',
+        progressUp: true
+    });
+</script>
+
+{{/msg}}
 {{ > /includes/footer }}
