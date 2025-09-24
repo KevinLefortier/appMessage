@@ -5,17 +5,28 @@
     Créer un message
 </a>
 <h2>Messages</h2>
-<ul>
-    {{#message}}
-    <li>{{title}}</li>
-    {{/message}}
+<div class="ui relaxed divided list">
+    {{#messages}}
+    <div class="item">
+        <div class="right floated content">
+            <a href="/update/{{code}}" class="ui small circular basic icon button">
+                <i class="ui edit icon"></i>
+            </a>
+        </div>
+        <i class="large {{icon}} {{color}} middle aligned icon"></i>
+        <div class="content">
+            <a class="header">{{title}}</a>
+            <div class="description">{{description}}</div>
+        </div>
+    </div>
+    {{/messages}}
 
-    {{^message}}
+    {{^messages}}
     <div class="ui message"> Aucun message</div>
-    {{/message}}
-</ul>
+    {{/messages}}
+</div>
 
-{{#msg}}
+{{#toast}}
 <script>
     $.toast({
         title: 'Ajout de message',
@@ -26,5 +37,5 @@
     });
 </script>
 
-{{/msg}}
+{{/toast}}
 {{ > /includes/footer }}

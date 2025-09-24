@@ -1,12 +1,14 @@
 package fr.caensup.sio.demo.models;
 
 public class AppMessage {
+    private int code;
     private String title;
     private String description;
     private String icon;
     private String color;
 
     public AppMessage(String title, String description, String icon, String color) {
+        this.code = hashCode();
         this.title = title;
         this.description = description;
         this.icon = icon;
@@ -15,6 +17,10 @@ public class AppMessage {
 
     public AppMessage(){
         this("Titre...", "Description...", "info", "blue");
+    }
+
+    public int getCode(){
+        return code;
     }
 
     public String getTitle() {

@@ -1,2 +1,55 @@
 </body>
 </html>
+
+
+<button id="darkModeToggle" class="ui button">
+    <i class="moon icon"></i> Dark Mode
+</button>
+<style id="darkModeStyles">
+    body.dark-mode {
+        background-color: #121212 !important;
+        color: #f0f0f0 !important;
+    }
+
+    body.dark-mode a,
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode li {
+        color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .ui.button {
+        background-color: #333 !important;
+        color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .ui.message {
+        background-color: #1f1f1f !important;
+        color: #f0f0f0 !important;
+    }
+
+    body.dark-mode i.icon {
+        color: #f0f0f0 !important;
+    }
+</style>
+<script>
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    // Check for previously saved preference
+    if(localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
+
+    toggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Save preference
+        if(body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    });
+
+</script>

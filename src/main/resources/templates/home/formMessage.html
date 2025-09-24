@@ -1,18 +1,18 @@
 {{ > /includes/header }}
 <h1 class="ui header">{{title}}</h1>
 {{#msg}}
-<form class="ui form" method="post" action="/create">
+<form class="ui form" method="post" action="{{action}}">
     <div class="ui field">
         <input class="ui input" name="title" placeholder="Saisir un titre" value="{{title}}">
     </div>
     <div class="ui field">
-        <textarea class="ui textarea" name="description" placeholder="Saisir une description">{{description}}</textarea>
+        <textarea class="ui textarea" name="description" placeholder="Saisir une description">{{description}}{{.}}{{description}}</textarea>
     </div>
     <div class="ui field">
-        <input class="ui input" name="color" placeholder="Saisir une couleur" value="{{color}}">
+        <input class="ui input" name="color" placeholder="Saisir une couleur" value="{{#color}}{{.}}{{/color}}">
     </div>
     <div class="ui field">
-        <input class="ui input" name="icon" placeholder="Saisir une icône" value="{{icon}}">
+        <input class="ui input" name="icon" placeholder="Saisir une icône" value="{{#icon}}{{.}}{{/icon}}">
     </div>
     <button type="submit" class="ui green button">{{btnValidateCaption}}</button>
 </form>
